@@ -4,13 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Why Must We Unite</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter (used for all text to match screenshot's sans-serif style) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* --- CSS FOR NAVIGATION MENU ADDED HERE --- */
+        nav {
+            background-color: #16213E; /* Matched color to your theme */
+            overflow: hidden;
+            width: 100%;
+            border-bottom: 2px solid #EF4444; /* Using your page's red accent */
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        nav li {
+            display: inline-block;
+        }
+        nav a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        nav a:hover {
+            background-color: #EF4444;
+            color: white;
+        }
+        /* --- END OF NAV MENU CSS --- */
+
         body {
             font-family: 'Inter', sans-serif; /* Using Inter for all text as per screenshot's sans-serif style */
             background-color: #F8F8F8; /* Off-white background from screenshot */
@@ -58,19 +85,22 @@
 </head>
 <body class="min-h-screen overflow-y-auto">
 
-    <div class="container mx-auto max-w-7xl py-12 px-6"> <!-- Increased max-w and horizontal padding -->
+    <nav>
+      <ul>
+        <li><a href="democrary_decline.html">A Democracy In Decline</a></li>
+        <li><a href="CoreIssue.html">The Core Issue</a></li>
+        <li><a href="Unity1.html">Why Must We Unite</a></li>
+      </ul>
+    </nav>
 
-        <!-- Header Section -->
-        <header class="bg-white rounded-xl shadow-lg p-8 md:p-10 border border-gray-200 text-center mb-8">
+    <div class="container mx-auto max-w-7xl py-12 px-6"> <header class="bg-white rounded-xl shadow-lg p-8 md:p-10 border border-gray-200 text-center mb-8">
             <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.02);">
                 WHY MUST WE UNITE
             </h1>
         </header>
 
-        <!-- Main Content Sections -->
         <main class="space-y-12">
 
-            <!-- Introduction Section -->
             <div class="bg-white rounded-xl shadow-lg p-8 md:p-10 border border-gray-200 relative overflow-hidden">
                 <span class="section-number">01</span>
                 <div class="section-content">
@@ -87,7 +117,6 @@
                 </div>
             </div>
 
-            <!-- The Imperatives for Unity Section -->
             <div class="bg-white rounded-xl shadow-lg p-8 md:p-10 border border-gray-200 relative overflow-hidden">
                 <span class="section-number">02</span>
                 <div class="section-content">
@@ -97,7 +126,6 @@
                     </h2>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                        <!-- Moral Imperative -->
                         <div class="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
                             <h3 class="text-lg font-semibold mb-3 flex items-center">
                                 <i class="fas fa-balance-scale mr-2 icon-color"></i> Moral Imperative:
@@ -107,7 +135,6 @@
                             </p>
                         </div>
 
-                        <!-- Democratic Imperative -->
                         <div class="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
                             <h3 class="text-lg font-semibold mb-3 flex items-center">
                                 <i class="fas fa-vote-yea mr-2 icon-color"></i> Democratic Imperative:
@@ -117,7 +144,6 @@
                             </p>
                         </div>
 
-                        <!-- Strategic Imperative -->
                         <div class="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
                             <h3 class="text-lg font-semibold mb-3 flex items-center">
                                 <i class="fas fa-chess-knight mr-2 icon-color"></i> Strategic Imperative:
@@ -130,7 +156,6 @@
                 </div>
             </div>
 
-            <!-- Peril of Fragmentation Card -->
             <div class="bg-white rounded-xl shadow-lg p-8 md:p-10 border border-gray-200 relative overflow-hidden">
                 <span class="section-number">03</span>
                 <div class="section-content">
@@ -144,7 +169,6 @@
                 </div>
             </div>
 
-            <!-- Our Path Forward Card -->
             <div class="bg-white rounded-xl shadow-lg p-8 md:p-10 border border-gray-200 relative overflow-hidden">
                 <span class="section-number">04</span>
                 <div class="section-content">
@@ -156,22 +180,18 @@
                         This is not a call for uniformity, but for unity of purpose. We must:
                     </p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Converge on Core Principles -->
                         <div class="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
                             <span class="font-bold text-lg block mb-2 text-gray-800 flex items-center"><i class="fas fa-lightbulb mr-2 icon-color"></i> Converge on Core Principles:</span>
                             <p class="text-sm leading-relaxed text-gray-700">Identify and champion the non-negotiable tenets of our Constitution – secularism, justice, liberty, equality, and fraternity – as the bedrock of our common platform.</p>
                         </div>
-                        <!-- Build Bridges, Not Walls -->
                         <div class="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
                             <span class="font-bold text-lg block mb-2 text-gray-800 flex items-center"><i class="fas fa-hands-helping mr-2 icon-color"></i> Build Bridges, Not Walls:</span>
                             <p class="text-sm leading-relaxed text-gray-700">Actively seek out and collaborate with every individual and group, transcending ideological differences to focus on our shared democratic future.</p>
                         </div>
-                        <!-- Amplify Collective Voices -->
                         <div class="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
                             <span class="font-bold text-lg block mb-2 text-gray-800 flex items-center"><i class="fas fa-bullhorn mr-2 icon-color"></i> Amplify Collective Voices:</span>
                             <p class="text-sm leading-relaxed text-gray-700">Create mechanisms for coordinated action, shared resources, and a unified communication strategy that cuts through the noise and reaches every corner of India.</p>
                         </div>
-                        <!-- Mobilize and Educate -->
                         <div class="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
                             <span class="font-bold text-lg block mb-2 text-gray-800 flex items-center"><i class="fas fa-users-gear mr-2 icon-color"></i> Mobilize and Educate:</span>
                             <p class="text-sm leading-relaxed text-gray-700">Empower citizens with knowledge, encourage critical thinking, and foster a culture of fearless participation in our democratic process.</p>
@@ -180,7 +200,6 @@
                 </div>
             </div>
 
-            <!-- Conclusion Section -->
             <div class="bg-white rounded-xl shadow-lg p-8 md:p-10 border border-gray-200 text-center relative overflow-hidden">
                 <span class="section-number">05</span>
                 <div class="section-content">
@@ -195,7 +214,6 @@
                         Let us stand together, for the soul of India, for the future of our children, and for the enduring promise of our Republic.
                     </p>
 
-                    <!-- Call to Action -->
                     <p class="text-center mt-8 text-3xl md:text-4xl font-extrabold text-gray-900">
                         The time for unity is now.
                     </p>
@@ -206,4 +224,3 @@
     </div>
 </body>
 </html>
-
