@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>United4India | The Plan</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Lora & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <script>
+        // Custom Tailwind CSS Configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Lora', 'serif'],
+                    },
+                    colors: {
+                        // Consistent Color Palette from Main Theme
+                        'brand-dark': '#1e293b', 
+                        'brand-light': '#f8fafc', 
+                        'brand-text': '#334155', 
+                        'brand-accent': '#38bdf8', 
+                        'brand-accent-hover': '#0ea5e9',
+                        // Page-specific colors from user's design
+                        'plan-bg': '#FDFBF8',
+                        'plan-light-bg': '#F6F4F1',
+                        'plan-dark-text': '#3A3532',
+                        'plan-mid-text': '#6E655F',
+                        'plan-accent': '#D57A66',
+                        'plan-border': '#EAE5DD',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* General Styles */
+        html { scroll-behavior: smooth; }
+        body { 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8; /* plan-bg */
+            color: #3A3532; /* plan-dark-text */
+        }
+        main { flex-grow: 1; }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Lora', serif;
+        }
+        .tab-btn.active { 
+            border-color: #D57A66; /* plan-accent */
+            color: #D57A66; /* plan-accent */
+            background-color: #FDFBF8; /* plan-bg */
+        }
+        .tab-btn { 
+            border-color: #EAE5DD; /* plan-border */
+            color: #6E655F; /* plan-mid-text */
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .stakeholder-card { transition: all 0.3s ease-in-out; }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- ========== HEADER / NAVIGATION (Consistent with other pages) ========== -->
+    <header id="header" class="bg-brand-dark shadow-md sticky top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-white text-2xl font-bold tracking-wider">
+                        United<span class="text-brand-accent">4</span>India
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center md:space-x-2 lg:space-x-4">
+                    <a href="index.html" class="text-slate-300 hover:bg-brand-accent-hover hover:text-white p-2 rounded-md" title="Home">
+                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                        </svg>
+                    </a>
+                    <a href="crisis.html" class="text-slate-300 hover:bg-brand-accent-hover hover:text-white px-3 py-2 rounded-md text-sm font-medium">The Crisis</a>
+                    <a href="the-reason.html" class="text-slate-300 hover:bg-brand-accent-hover hover:text-white px-3 py-2 rounded-md text-sm font-medium">The Reason</a>
+                    <a href="solution.html" class="text-slate-300 hover:bg-brand-accent-hover hover:text-white px-3 py-2 rounded-md text-sm font-medium">The Solution</a>
+                    <a href="the-plan.html" class="bg-brand-accent text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">The Plan</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu, hidden by default -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="text-slate-300 hover:bg-brand-accent-hover hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="crisis.html" class="text-slate-300 hover:bg-brand-accent-hover hover:text-white block px-3 py-2 rounded-md text-base font-medium">The Crisis</a>
+                <a href="the-reason.html" class="text-slate-300 hover:bg-brand-accent-hover hover:text-white block px-3 py-2 rounded-md text-base font-medium">The Reason</a>
+                <a href="solution.html" class="text-slate-300 hover:bg-brand-accent-hover hover:text-white block px-3 py-2 rounded-md text-base font-medium">The Solution</a>
+                <a href="the-plan.html" class="bg-brand-accent text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">The Plan</a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- ========== MAIN CONTENT (From User's HTML) ========== -->
+    <main>
+        <!-- Hero Section -->
+        <section class="text-center py-20 md:py-32 px-6 bg-plan-light-bg border-b border-plan-border">
+            <div class="container mx-auto">
+                <h1 class="text-5xl md:text-7xl font-extrabold text-plan-dark-text">United for India</h1>
+                <p class="mt-4 text-2xl md:text-3xl font-serif text-plan-mid-text">A New Architecture of Dissent</p>
+                <p class="mt-8 text-lg md:text-xl text-plan-mid-text max-w-4xl mx-auto">As we witness the slow unraveling of India's democratic spirit, we know we can't afford to stay silent. That’s why we need to come together—to create a platform that brings together people of conscience, that helps citizens organize with purpose, and that lays the foundation for a thoughtful, strategic, and lasting movement to renew our civic life.</p>
+            </div>
+        </section>
+
+        <!-- Our Model Section -->
+        <section id="model" class="py-20 md:py-28 px-6">
+            <div class="container mx-auto">
+                <div class="text-center max-w-5xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-bold text-plan-dark-text">A National Alliance for Research and Action</h2>
+                    <p class="mt-4 text-lg text-plan-mid-text max-w-5xl mx-auto">Traditional activism has taken us far, but it’s no longer enough. The challenges we face now call for something deeper, more adaptive. That’s why we need a new kind of space—where thoughtful research and lived experience come together, where bold ideas don’t just stay on paper but move people, shift narratives, and drive action. It’s not just a think tank, and it’s not just a movement—it’s both, built for the road ahead.</p>
+                </div>
+                <div class="mt-16 grid md:grid-cols-2 gap-4 max-w-6xl mx-auto">
+                    <div class="border-2 border-dashed border-gray-300 rounded-2xl p-8 text-center">
+                        <span class="text-5xl">🧠</span>
+                        <h3 class="text-2xl font-bold mt-4 text-plan-dark-text">The Think Tank</h3>
+                        <p class="mt-2 text-plan-mid-text">Our intellectual engine. To produce high-quality, evidence-based research, policy briefs, and legal analysis to diagnose the roots of democratic decay and develop credible, constructive alternatives.</p>
+                    </div>
+                    <div class="border-2 border-dashed border-gray-300 rounded-2xl p-8 text-center">
+                        <span class="text-5xl">💪</span>
+                        <h3 class="text-2xl font-bold mt-4 text-plan-dark-text">The Action Coalition</h3>
+                        <p class="mt-2 text-plan-mid-text">Our executive arm. To translate ideas into tangible impact through strategic campaigns, grassroots mobilization, and high-impact litigation to defend constitutional values and hold power to account.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Pillars Section -->
+        <section id="pillars" class="py-20 md:py-28 px-6 bg-plan-light-bg border-t border-b border-plan-border">
+            <div class="container mx-auto">
+                <div class="text-center max-w-5xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-bold text-plan-dark-text">How It Will Function: The Three Pillars</h2>
+                    <p class="mt-4 text-lg text-plan-mid-text">Our strategy is built on three interconnected pillars that create a self-reinforcing cycle of network-building, strategic intervention, and protective solidarity.</p>
+                </div>
+
+                <div class="mt-16 max-w-6xl mx-auto">
+                    <!-- Tabs Navigation -->
+                    <div class="border-b border-plan-border flex justify-center space-x-2 md:space-x-4">
+                        <button class="tab-btn active py-3 px-6 text-sm md:text-base font-bold rounded-t-lg transition-colors" onclick="openTab(event, 'network')">🌐 Weaving the National Fabric</button>
+                        <button class="tab-btn py-3 px-6 text-sm md:text-base font-bold rounded-t-lg transition-colors" onclick="openTab(event, 'campaigns')">📢 Strategic Interventions</button>
+                        <button class="tab-btn py-3 px-6 text-sm md:text-base font-bold rounded-t-lg transition-colors" onclick="openTab(event, 'support')">⚖️ The Shield of Solidarity</button>
+                    </div>
+
+                    <!-- Tabs Content -->
+                    <div class="mt-8">
+                        <div id="network" class="tab-content active">
+                            <h3 class="text-2xl font-bold text-plan-dark-text">Weaving the National Fabric</h3>
+                            <p class="mt-2 text-plan-mid-text">At the core of this initiative will be a nationwide network of professionals—journalists, activists, lawyers, and academics—systematically mapped and connected into a cohesive, pan-Indian coalition.<br><br>This network will follow a decentralized hub-and-spoke model, balancing national-level coordination with local-level responsiveness.<br><br>A key component will be the Professional Corps—a structured platform that enables unaffiliated doctors, scientists, and tech experts to contribute their skills meaningfully, securely, and at scale.</p>
+                        </div>
+                        <div id="campaigns" class="tab-content">
+                            <h3 class="text-2xl font-bold text-plan-dark-text">Strategic Interventions for Impact</h3>
+                            <p class="mt-2 text-plan-mid-text">Our approach will move beyond reactive responses to proactive influence.<br><br>Strategic interventions will include digital advocacy, grassroots mobilization, and targeted Public Interest Litigation (PIL).<br><br>Each campaign will be backed by a dedicated policy research unit, ensuring that actions are evidence-based, sharply focused, and designed to drive long-term systemic change—such as electoral reform, institutional accountability, and protection of digital rights.</p>
+                        </div>
+                        <div id="support" class="tab-content">
+                             <h3 class="text-2xl font-bold text-plan-dark-text">The Shield of Solidarity</h3>
+                            <p class="mt-2 text-plan-mid-text">To counter the tactic of isolating and intimidating dissenters, we will establish a robust legal and crisis response system.<br><br>A Rapid Response Mechanism will provide immediate support during legal, digital, or on-ground threats.<br><br>A Pro Bono Legal Phalanx—a collective of top lawyers and law firms—will be mobilized to offer expert legal defense and protection.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Coalition Section -->
+        <section id="coalition" class="py-20 md:py-28 px-6">
+            <div class="container mx-auto">
+                <div class="text-center max-w-5xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-bold text-plan-dark-text">Who Are The Stakeholders: A Civic Front</h2>
+                    <p class="mt-4 text-lg text-plan-mid-text">Our strength lies in our diversity. We are building a movement that brings together voices from every corner of society, united by a shared commitment to constitutional values. Click on a card to learn more.</p>
+                </div>
+
+                <div class="mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+                    <div class="stakeholder-card bg-plan-light-bg p-6 rounded-lg text-center flex flex-col justify-center items-center border border-plan-border cursor-pointer min-h-[150px]" onclick="toggleStakeholder(this)">
+                        <span class="text-4xl">📰</span><p class="font-bold mt-2 text-sm">Investigative Journalists</p>
+                        <p class="text-xs text-plan-mid-text mt-2 text-left hidden">The frontline reporters and editors who expose corruption and abuse of power, often facing censorship and legal intimidation for their work.</p>
+                    </div>
+                    <div class="stakeholder-card bg-plan-light-bg p-6 rounded-lg text-center flex flex-col justify-center items-center border border-plan-border cursor-pointer min-h-[150px]" onclick="toggleStakeholder(this)">
+                        <span class="text-4xl">🌍</span><p class="font-bold mt-2 text-sm">Activists & NGOs</p>
+                        <p class="text-xs text-plan-mid-text mt-2 text-left hidden">Grassroots organizers and civil society organizations advocating for human rights, environmental protection, and social justice, frequently targeted by funding restrictions and legal persecution.</p>
+                    </div>
+                    <div class="stakeholder-card bg-plan-light-bg p-6 rounded-lg text-center flex flex-col justify-center items-center border border-plan-border cursor-pointer min-h-[150px]" onclick="toggleStakeholder(this)">
+                        <span class="text-4xl">⚖️</span><p class="font-bold mt-2 text-sm">Committed Lawyers</p>
+                        <p class="text-xs text-plan-mid-text mt-2 text-left hidden">Legal professionals who defend constitutional values, challenge unjust laws, and provide pro bono support to those under attack.</p>
+                    </div>
+                    <div class="stakeholder-card bg-plan-light-bg p-6 rounded-lg text-center flex flex-col justify-center items-center border border-plan-border cursor-pointer min-h-[150px]" onclick="toggleStakeholder(this)">
+                        <span class="text-4xl">🎓</span><p class="font-bold mt-2 text-sm">Professors & Thinkers</p>
+                        <p class="text-xs text-plan-mid-text mt-2 text-left hidden">Academics and public intellectuals who provide the intellectual framework for understanding democratic decay and resisting academic suppression.</p>
+                    </div>
+                     <div class="stakeholder-card bg-plan-light-bg p-6 rounded-lg text-center flex flex-col justify-center items-center border border-plan-border cursor-pointer min-h-[150px]" onclick="toggleStakeholder(this)">
+                        <span class="text-4xl">🎨</span><p class="font-bold mt-2 text-sm">Artists & Creators</p>
+                         <p class="text-xs text-plan-mid-text mt-2 text-left hidden">Cultural workers, writers, and influential social media voices who shape public opinion and translate complex political issues into compelling narratives.</p>
+                    </div>
+                     <div class="stakeholder-card bg-plan-light-bg p-6 rounded-lg text-center flex flex-col justify-center items-center border border-plan-border cursor-pointer min-h-[150px]" onclick="toggleStakeholder(this)">
+                        <span class="text-4xl">🩺</span><p class="font-bold mt-2 text-sm">Doctors & Scientists</p>
+                         <p class="text-xs text-plan-mid-text mt-2 text-left hidden">Professionals who lend their technical expertise to fact-check misinformation, analyze public health or environmental data, and provide expert testimony.</p>
+                    </div>
+                    <div class="stakeholder-card bg-plan-light-bg p-6 rounded-lg text-center flex flex-col justify-center items-center border border-plan-border cursor-pointer min-h-[150px]" onclick="toggleStakeholder(this)">
+                        <span class="text-4xl">🏛️</span><p class="font-bold mt-2 text-sm">Retired Bureaucrats</p>
+                        <p class="text-xs text-plan-mid-text mt-2 text-left hidden">Former civil servants with deep institutional knowledge and moral authority, offering wisdom on policy and governance.</p>
+                    </div>
+                    <div class="stakeholder-card bg-plan-light-bg p-6 rounded-lg text-center flex flex-col justify-center items-center border border-plan-border cursor-pointer min-h-[150px]" onclick="toggleStakeholder(this)">
+                        <span class="text-4xl">💡</span><p class="font-bold mt-2 text-sm">Emerging Leaders</p>
+                        <p class="text-xs text-plan-mid-text mt-2 text-left hidden">A new generation of political and social leaders rooted in people's struggles and committed to integrity.</p>
+                    </div>
+                    <div class="stakeholder-card bg-plan-light-bg p-6 rounded-lg text-center flex flex-col justify-center items-center border border-plan-border cursor-pointer min-h-[150px]" onclick="toggleStakeholder(this)">
+                        <span class="text-4xl">🤝</span><p class="font-bold mt-2 text-sm">Victims of Repression</p>
+                        <p class="text-xs text-plan-mid-text mt-2 text-left hidden">Individuals and communities who have directly experienced state violence or injustice, whose stories provide moral clarity to the movement.</p>
+                    </div>
+                    <div class="stakeholder-card bg-plan-accent text-white p-6 rounded-lg text-center flex flex-col justify-center items-center border border-plan-border cursor-pointer min-h-[150px]" onclick="toggleStakeholder(this)">
+                        <span class="text-4xl">🇮🇳</span><p class="font-bold mt-2 text-sm">Concerned Citizens</p>
+                        <p class="text-xs mt-2 text-left hidden text-white">The vast majority of ordinary Indians who care deeply about the country's direction and are ready to stand up and be counted.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section id="roadmap" class="py-20 md:py-28 px-6 bg-plan-light-bg border-t border-b border-plan-border overflow-x-hidden">
+            <div class="container mx-auto">
+                <div class="text-center max-w-5xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-bold text-plan-dark-text">The Next Steps: A Phased Roadmap</h2>
+                    <p class="mt-4 text-lg text-plan-mid-text">The establishment of a nationwide collective of this scale and ambition must be approached strategically and methodically. Our implementation plan ensures a strong foundation and sustainable growth.</p>
+                </div>
+                
+                <div class="mt-16 md:mt-24">
+                    <!-- Desktop Roadmap -->
+                    <div class="hidden md:grid grid-cols-9 grid-rows-1 items-center">
+                        <!-- Phase 1 -->
+                        <div class="col-span-3 text-right">
+                            <p class="font-bold text-plan-accent">PHASE 1</p>
+                            <h3 class="text-xl font-bold mt-1 text-plan-dark-text">Foundation & Architecture</h3>
+                            <ul class="mt-4 space-y-2 text-sm text-plan-mid-text text-left">
+                                <li class="flex items-start"><span class="mr-2">👥</span>Find core leadership/mentors.</li>
+                                <li class="flex items-start"><span class="mr-2">🏛️</span>Design the Architecture of the coalition.</li>
+                                <li class="flex items-start"><span class="mr-2">✅</span>Onboard core team from all cohorts.</li>
+                            </ul>
+                        </div>
+                        <div class="col-span-1 flex justify-center items-center h-full">
+                             <div class="w-8 h-8 rounded-full bg-plan-accent flex items-center justify-center text-white font-bold z-10">1</div>
+                        </div>
+                        <div class="col-span-1 h-full w-full relative">
+                            <div class="absolute top-1/2 left-0 w-full h-1 bg-plan-accent"></div>
+                            <div class="absolute top-1/2 right-0 w-1/2 h-24 border-r-4 border-t-4 border-b-4 border-plan-accent rounded-tr-full rounded-br-full"></div>
+                        </div>
+                        <div></div><div></div><div></div><div></div>
+                        
+                        <!-- Phase 2 -->
+                        <div></div><div></div><div></div>
+                        <div class="col-span-1 h-full w-full relative">
+                            <div class="absolute bottom-1/2 right-0 w-full h-1 bg-plan-accent"></div>
+                            <div class="absolute bottom-1/2 left-0 w-1/2 h-24 border-l-4 border-t-4 border-b-4 border-plan-accent rounded-tl-full rounded-bl-full"></div>
+                        </div>
+                        <div class="col-span-1 flex justify-center items-center h-full">
+                             <div class="w-8 h-8 rounded-full bg-plan-accent flex items-center justify-center text-white font-bold z-10">2</div>
+                        </div>
+                        <div class="col-span-3 text-left">
+                            <p class="font-bold text-plan-accent">PHASE 2</p>
+                            <h3 class="text-xl font-bold mt-1 text-plan-dark-text">Mobilization & Outreach</h3>
+                            <ul class="mt-4 space-y-2 text-sm text-plan-mid-text text-left">
+                                <li class="flex items-start"><span class="mr-2">🔗</span>Constitute various subcommittees.</li>
+                                <li class="flex items-start"><span class="mr-2">📜</span>Develop a common minimum programme.</li>
+                                <li class="flex items-start"><span class="mr-2">📢</span>Design outreach campaigns.</li>
+                                <li class="flex items-start"><span class="mr-2">🗺️</span>Increase presence across the country.</li>
+                            </ul>
+                        </div>
+                        <div></div>
+                        
+                        <!-- Phase 3 -->
+                        <div class="col-span-3 text-right">
+                            <p class="font-bold text-plan-accent">PHASE 3</p>
+                            <h3 class="text-xl font-bold mt-1 text-plan-dark-text">Political Engagement</h3>
+                            <ul class="mt-4 space-y-2 text-sm text-plan-mid-text text-left">
+                                <li class="flex items-start"><span class="mr-2">🤝</span>Negotiate alliances with opposition parties.</li>
+                                <li class="flex items-start"><span class="mr-2">🗳️</span>Run electoral campaigns in coalition.</li>
+                            </ul>
+                        </div>
+                        <div class="col-span-1 flex justify-center items-center h-full">
+                             <div class="w-8 h-8 rounded-full bg-plan-accent flex items-center justify-center text-white font-bold z-10">3</div>
+                        </div>
+                        <div class="col-span-1 h-full w-full relative">
+                            <div class="absolute top-1/2 left-0 w-full h-1 bg-plan-accent"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Roadmap -->
+                    <div class="md:hidden space-y-8">
+                        <div class="flex items-start">
+                            <div class="mr-4 flex-shrink-0">
+                                <div class="w-8 h-8 rounded-full bg-plan-accent flex items-center justify-center text-white font-bold">1</div>
+                                <div class="w-1 h-full bg-plan-accent mx-auto mt-2"></div>
+                            </div>
+                            <div>
+                                <p class="font-bold text-plan-accent">PHASE 1</p>
+                                <h3 class="text-xl font-bold mt-1 text-plan-dark-text">Foundation & Architecture</h3>
+                                <ul class="mt-2 space-y-2 text-sm text-plan-mid-text list-disc list-inside">
+                                    <li>Find core leadership/mentors (4-6 people).</li>
+                                    <li>Design the Architecture of the coalition.</li>
+                                    <li>Onboard core team (20-25) from all cohorts.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="mr-4 flex-shrink-0">
+                                <div class="w-8 h-8 rounded-full bg-plan-accent flex items-center justify-center text-white font-bold">2</div>
+                                <div class="w-1 h-full bg-plan-accent mx-auto mt-2"></div>
+                            </div>
+                            <div>
+                                <p class="font-bold text-plan-accent">PHASE 2</p>
+                                <h3 class="text-xl font-bold mt-1 text-plan-dark-text">Mobilization & Outreach</h3>
+                                <ul class="mt-2 space-y-2 text-sm text-plan-mid-text list-disc list-inside">
+                                    <li>Constitute various subcommittees.</li>
+                                    <li>Develop a common minimum programme.</li>
+                                    <li>Design outreach campaigns.</li>
+                                    <li>Increase presence across the country.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                             <div class="mr-4 flex-shrink-0">
+                                <div class="w-8 h-8 rounded-full bg-plan-accent flex items-center justify-center text-white font-bold">3</div>
+                            </div>
+                            <div>
+                                <p class="font-bold text-plan-accent">PHASE 3</p>
+                                <h3 class="text-xl font-bold mt-1 text-plan-dark-text">Political Engagement</h3>
+                                <ul class="mt-2 space-y-2 text-sm text-plan-mid-text list-disc list-inside">
+                                    <li>Negotiate alliances with opposition parties.</li>
+                                    <li>Run electoral campaigns in coalition.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========== FOOTER (Consistent with other pages) ========== -->
+    <footer class="bg-brand-dark">
+        <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-slate-400">
+            <p>&copy; 2025 United4India. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu Toggle and Page-specific logic -->
+    <script>
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // --- Page-specific JS ---
+        // Tab functionality
+        function openTab(event, tabName) {
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(tab => tab.classList.remove('active'));
+
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Stakeholder card toggle functionality
+        function toggleStakeholder(cardElement) {
+            const allCards = document.querySelectorAll('.stakeholder-card');
+            const description = cardElement.querySelector('p:last-child');
+            const isOpening = description.classList.contains('hidden');
+
+            // Close all other cards
+            allCards.forEach(card => {
+                if (card !== cardElement) {
+                    card.querySelector('p:last-child').classList.add('hidden');
+                    card.classList.remove('justify-start');
+                    card.classList.add('justify-center');
+                }
+            });
+
+            // Toggle the clicked card
+            if (isOpening) {
+                description.classList.remove('hidden');
+                cardElement.classList.remove('justify-center');
+                cardElement.classList.add('justify-start');
+            } else {
+                description.classList.add('hidden');
+                cardElement.classList.remove('justify-start');
+                cardElement.classList.add('justify-center');
+            }
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>United4India | Home</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        // Custom Tailwind CSS Configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        // Consistent Color Palette
+                        'brand-dark': '#1e293b', // A deep, dark slate for headers/footers
+                        'brand-light': '#f8fafc', // A very light gray/off-white for backgrounds
+                        'brand-text': '#334155', // A readable dark slate for body text
+                        'brand-accent': '#38bdf8', // A bright sky blue for links and highlights
+                        'brand-accent-hover': '#0ea5e9', // A slightly darker blue for hover states
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Simple style for smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Ensure the body takes up at least the full height of the viewport */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body class="bg-brand-light font-sans text-brand-text antialiased">
+
+    <!-- ========== HEADER / NAVIGATION ========== -->
+    <header id="header" class="bg-brand-dark shadow-md sticky top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-white text-2xl font-bold tracking-wider">
+                        United<span class="text-brand-accent">4</span>India
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center md:space-x-2 lg:space-x-4">
+                    <a href="index.html" class="bg-brand-accent text-white p-2 rounded-md" aria-current="page" title="Home">
+                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                        </svg>
+                    </a>
+                    <a href="crisis.html" class="text-slate-300 hover:bg-brand-accent-hover hover:text-white px-3 py-2 rounded-md text-sm font-medium">The Crisis</a>
+                    <a href="the-reason.html" class="text-slate-300 hover:bg-brand-accent-hover hover:text-white px-3 py-2 rounded-md text-sm font-medium">The Reason</a>
+                    <a href="solution.html" class="text-slate-300 hover:bg-brand-accent-hover hover:text-white px-3 py-2 rounded-md text-sm font-medium">The Solution</a>
+                    <a href="the-plan.html" class="text-slate-300 hover:bg-brand-accent-hover hover:text-white px-3 py-2 rounded-md text-sm font-medium">The Plan</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu, hidden by default -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="bg-brand-accent text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Home</a>
+                <a href="crisis.html" class="text-slate-300 hover:bg-brand-accent-hover hover:text-white block px-3 py-2 rounded-md text-base font-medium">The Crisis</a>
+                <a href="the-reason.html" class="text-slate-300 hover:bg-brand-accent-hover hover:text-white block px-3 py-2 rounded-md text-base font-medium">The Reason</a>
+                <a href="solution.html" class="text-slate-300 hover:bg-brand-accent-hover hover:text-white block px-3 py-2 rounded-md text-base font-medium">The Solution</a>
+                <a href="the-plan.html" class="text-slate-300 hover:bg-brand-accent-hover hover:text-white block px-3 py-2 rounded-md text-base font-medium">The Plan</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main class="flex-grow flex items-center justify-center py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Card 1: The Crisis -->
+                <a href="crisis.html" class="group block p-8 bg-red-500 rounded-2xl shadow-lg hover:bg-red-600 hover:-translate-y-1 transition-all duration-300 text-center">
+                    <div class="flex justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-16 w-16 text-white">
+                          <path fill-rule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h2 class="mt-4 text-xl font-bold text-white">The Crisis</h2>
+                </a>
+
+                <!-- Card 2: The Reason -->
+                <a href="the-reason.html" class="group block p-8 bg-amber-500 rounded-2xl shadow-lg hover:bg-amber-600 hover:-translate-y-1 transition-all duration-300 text-center">
+                    <div class="flex justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-16 w-16 text-white">
+                          <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.25-1.5a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v.75c0 .75-.225 1.41-.634 1.952l-.433.578a3.249 3.249 0 00-.52 1.434V15a.75.75 0 01-1.5 0v-.091c0-.92.38-1.752.99-2.333l.433-.578c.11-.147.17-.317.17-.491v-.75a.75.75 0 01-.75-.75h-.75a.75.75 0 01-.75-.75zm1.5 5.25a.75.75 0 100 1.5.75.75 0 000-1.5z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h2 class="mt-4 text-xl font-bold text-white">The Reason</h2>
+                </a>
+
+                <!-- Card 3: The Solution -->
+                <a href="solution.html" class="group block p-8 bg-green-500 rounded-2xl shadow-lg hover:bg-green-600 hover:-translate-y-1 transition-all duration-300 text-center">
+                   <div class="flex justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-16 w-16 text-white">
+                          <path fill-rule="evenodd" d="M15.75 1.5a6.75 6.75 0 00-6.651 7.906c.067.39-.032.79-.263 1.123l-2.25 3.375c-.386.577-.962 1.026-1.616 1.252a6.75 6.75 0 1011.662-1.628.75.75 0 00-.507-.71l-1.875-.625a.75.75 0 00-.883.212l-1.157 1.157a3 3 0 01-4.242 0l-1.158-1.157a.75.75 0 00-1.061 0l-1.157 1.157a4.5 4.5 0 006.364 0l1.157-1.157a.75.75 0 00-.212-.883l-.625-1.875a.75.75 0 00-.71-.507A6.75 6.75 0 0015.75 1.5z" clip-rule="evenodd" />
+                        </svg>
+                   </div>
+                    <h2 class="mt-4 text-xl font-bold text-white">The Solution</h2>
+                </a>
+
+                <!-- Card 4: The Plan -->
+                <a href="the-plan.html" class="group block p-8 bg-sky-500 rounded-2xl shadow-lg hover:bg-sky-600 hover:-translate-y-1 transition-all duration-300 text-center">
+                    <div class="flex justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-16 w-16 text-white">
+                          <path fill-rule="evenodd" d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0016.5 9h-1.875a1.875 1.875 0 01-1.875-1.875V5.25A3.75 3.75 0 009 1.5H5.625zM7.5 15a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5H12a.75.75 0 000-1.5H8.25z" clip-rule="evenodd" />
+                          <path d="M12.971 1.816A5.23 5.23 0 0114.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 013.434 1.279 9.768 9.768 0 00-3.262-3.262 9.768 9.768 0 00-3.262-3.262A5.23 5.23 0 0112.97 1.816z" />
+                        </svg>
+                    </div>
+                    <h2 class="mt-4 text-xl font-bold text-white">The Plan</h2>
+                </a>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="bg-brand-dark">
+        <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-slate-400">
+            <p>&copy; 2025 United4India. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
+
